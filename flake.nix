@@ -20,6 +20,11 @@
           packages = with pkgs; [
             bear
             black
+            (banana-vera.overrideAttrs {
+              postInstall = ''
+                mv $out/bin/vera++ $out/bin/legacy-vera++
+              '';
+            })
           ];
 
           env.NIX_CFLAGS_COMPILE =
